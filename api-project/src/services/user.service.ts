@@ -19,7 +19,7 @@ export class UserService {
     });
   }
 
-  getUserByName(id: string): Promise<User | undefined> {
+  getUserById(id: string): Promise<User | undefined> {
     console.log('Id recebido: ', id);
     const idReplace = id.replace(`:`, '');
     return this.userRepository.findOne({

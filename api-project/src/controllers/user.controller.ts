@@ -27,7 +27,6 @@ export class UserController {
   ) {
     try {
       const { email, password } = loginDTO;
-      console.log(email, password);
       const result = await this.userService.login(email, password);
       if (!result || result === null) {
         return res.status(401).json({
@@ -44,7 +43,6 @@ export class UserController {
         user,
       });
     } catch (error) {
-      console.error(error);
       return res.status(500).json({
         statusCode: 500,
         success: false,
@@ -76,8 +74,7 @@ export class UserController {
 
   @Get('getUser/:id')
   async getUser(@Param('id') id: string, @Res() res: Response) {
-    const user = await this.userService.getUserByName(id);
-    console.log(user);
+    const user = await this.userService.getUserById(id);
     return res.status(200).json(user);
   }
   //inserção de usuário
@@ -101,7 +98,6 @@ export class UserController {
         message: 'User created successfully',
       });
     } catch (error) {
-      console.log(error);
       return res.status(400).json({
         statusCode: 400,
         success: false,
@@ -134,7 +130,6 @@ export class UserController {
 
   @Delete('deleteUser/:id')
   async deleteUser(@Param('id') id: string, @Res() res: Response) {
-    console.log(id);
     await this.userService.deleteUser(id);
     return res.json({
       statusCode: 200,
@@ -146,9 +141,6 @@ export class UserController {
   @Put('resetPassword')
   async resetPassword(@Body() body: ResetPasswordDto, @Res() res: Response) {
     const { id, newPassword } = body;
-    console.log(id);
-    console.log(newPassword);
-    //Caso de reset de senha via página do usuário
     if (id !== undefined && newPassword !== undefined) {
       try {
         const reset = await this.userService.resetPassword(body);
@@ -179,7 +171,6 @@ export class UserController {
   async getUserByEmail(@Body() body: { email: string }, @Res() res: Response) {
     try {
       const user = await this.userService.findOneByEmail(body.email);
-      console.log(user);
       if (user !== null) {
         return res.status(200).json({
           statusCode: 200,

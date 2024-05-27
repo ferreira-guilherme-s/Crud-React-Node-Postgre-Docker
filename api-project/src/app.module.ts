@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user.module';
-import { CommonData } from './models/user.module';
+import { CommonData } from './models/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { ApiToken } from './middleware/api-token';
 import * as dotenv from 'dotenv';
