@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from 'src/models/entities/user.entity';
@@ -8,15 +8,18 @@ import { ResetPasswordDto } from 'src/dtos/reset-password-dto';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
-export class UserService {
-  private readonly token: string;
+export class UserService implements OnModuleInit {
+  private token: string;
 
   constructor(
     @InjectRepository(User)
     private userRepository: Repository<User>,
-    config: ConfigService,
-  ) {
-    this.token = config.get('TOKEN_SECRET');
+    private config: ConfigService,
+  ) {}
+
+  onModuleInit() {
+    this.token = this.config.get('TOKEN_SECRET');
+    console.log('Token: ', this.token);
   }
 
   getUsers() {
