@@ -34,13 +34,13 @@ const HomePage = () => {
   const [userType, setUserType] = useState("user");
 
 
-  const handleCreate = () => {
+  const handleCreateModal = () => {
     setModalTitle('Criar Usuário');
     setSelectedUser(null);
     setIsModalOpen(true);
   }
 
-  const handleEdit = async (id: string) => {
+  const handleGetUser = async (id: string) => {
     setModalTitle('Editar Usuário');
     const response = await axios.get(`${api}getUser/:${id}`,
     {
@@ -49,7 +49,6 @@ const HomePage = () => {
       }
     }
     );
-    console.log(response);
     if(response.status === 200) {
       setSelectedUser(response.data);
     } else {
@@ -94,7 +93,6 @@ const HomePage = () => {
         window.location.reload();
       }
     } catch (error) {
-      console.log(error);
       alert('Erro ao criar usuário');
     }
   }
@@ -119,7 +117,6 @@ const HomePage = () => {
     localStorage.clear();
     navigate('/');
   }
-  console.log('Token do homepage', token);
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -128,7 +125,6 @@ const HomePage = () => {
             'auth-token': token
           }
         });
-        console.log(response);
         if (response.status === 200) {
           setStatus('success');
           setUsers(response.data.data.users);
@@ -164,12 +160,12 @@ const HomePage = () => {
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
         {getUserType === 'admin' ? (
-          <button onClick={handleCreate} className="create-button">
+          <button onClick={handleCreateModal} className="create-button">
             <FiPlus /> Criar Usuário
           </button>
         ) : null}
         {userId !== null && userId !== '' && userId !== undefined ? (
-          <button onClick={() => handleEdit(userId)} className="create-button">
+          <button onClick={() => handleGetUser(userId)} className="create-button">
             Meu Perfil
           </button>
          ) : null }
@@ -186,13 +182,12 @@ const HomePage = () => {
         </thead>
         <tbody>
           {users.map((user) => (
-            console.log(user),
             <tr key={user.id}>
               <td>{user.name}</td>
               <td>{user.email}</td>
               {getUserType === 'admin' ? (
                 <td>
-                  <button onClick={() => handleEdit(user.id)}>
+                  <button onClick={() => handleGetUser(user.id)}>
                     <FiEdit2 />
                   </button>
                   <button onClick={() => handleDelete(user.id)}>

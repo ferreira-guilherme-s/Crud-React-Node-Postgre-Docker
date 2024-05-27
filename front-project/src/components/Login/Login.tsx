@@ -13,28 +13,23 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  // Função que é chamada quando o formulário é enviado
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log('Cheguei no login');
-    console.log(api);
-    const response = await axios.post(`${api}login`, {
-      email: username,
-      password: password,
-    });
-    console.log(response);
-    if (response.status === 200) {
-      console.log("Usuário logado com sucesso");
-      console.log(response.data.token);
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("userType", response.data.user.userType)
-      localStorage.setItem("userId", response.data.user.id)
-      return navigate("/dashboard");
-    } else {
-      alert("Usuário ou senha incorretos");
+    try {
+      const response = await axios.post(`${api}login`, {
+        email: username,
+        password: password,
+      });
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("userType", response.data.user.userType)
+        localStorage.setItem("userId", response.data.user.id)
+        return navigate("/dashboard");
+      }
+    } catch (error) {
+      alert("Usuário ou senha inválidos")
     }
-    // Faz o console log das credenciais do usuário
-    console.log("Dados de Login:", { username, password });
+
   };
 
   return (

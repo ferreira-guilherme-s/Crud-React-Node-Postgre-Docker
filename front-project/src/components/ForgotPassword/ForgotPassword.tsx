@@ -16,15 +16,16 @@ function ForgotPassword() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
   const [showPasswordInput, setShowPasswordInput] = useState(false);
   const [userId, setUserId] = useState('');
+
+
   const handleEmailSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
     try {
-      //await new Promise((resolve) => setTimeout(resolve, 4000));
       const response = await axios.post(`${api}getUserByEmail`, { email });
-      console.log(response);
       if (response.status === 200) {
         setUserId(response.data.data.user.id);
         setShowPasswordInput(true);
@@ -39,13 +40,10 @@ function ForgotPassword() {
   const handlePasswordSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      if(password !== confirmPassword) {
-        alert("As senhas não coincidem");
+      if (password !== confirmPassword) {
         return;
       }
-      console.log(userId);
       const response = await axios.put(`${api}resetPassword`, { id: userId, newPassword: password });
-      console.log(response);
       if(response.status === 200) {
         alert("Senha alterada com sucesso");
         navigate('/');

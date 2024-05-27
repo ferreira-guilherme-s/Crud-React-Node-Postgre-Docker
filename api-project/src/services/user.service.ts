@@ -19,7 +19,6 @@ export class UserService implements OnModuleInit {
 
   onModuleInit() {
     this.token = this.config.get('TOKEN_SECRET');
-    console.log('Token: ', this.token);
   }
 
   getUsers() {
@@ -29,7 +28,6 @@ export class UserService implements OnModuleInit {
   }
 
   getUserById(id: string): Promise<User | undefined> {
-    console.log('Id recebido: ', id);
     const idReplace = id.replace(`:`, '');
     return this.userRepository.findOne({
       where: { id: idReplace },
@@ -79,7 +77,6 @@ export class UserService implements OnModuleInit {
     email: string,
     password: string,
   ): Promise<{ token: string; user: Partial<User> } | null> {
-    console.log(this.token);
     const user = await this.findOneByEmail(email);
     if (user === undefined) {
       return null;
@@ -101,7 +98,6 @@ export class UserService implements OnModuleInit {
 
   async resetPassword(user: ResetPasswordDto) {
     const { id, newPassword, oldPassword } = user;
-    console.log(user);
     if (id !== undefined) {
       if (oldPassword !== undefined) {
         const user = await this.userRepository.findOne({ where: { id } });
@@ -115,7 +111,6 @@ export class UserService implements OnModuleInit {
       }
       const passwordHash = bcrypt.hashSync(newPassword, 10);
       await this.userRepository.update({ id }, { password: passwordHash });
-      console.log('Password updated');
     }
   }
 

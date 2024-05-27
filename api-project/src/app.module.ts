@@ -9,15 +9,17 @@ import { UserModule } from './user.module';
 import { CommonData } from './models/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { ApiToken } from './middleware/api-token';
+import * as dotenv from 'dotenv';
 
+dotenv.config();
 const appModules = [UserModule, CommonData];
 const typeOrmModule = TypeOrmModule.forRoot({
   type: 'postgres',
-  host: 'db',
-  port: 5432,
-  username: 'postgres',
-  password: 'postgres',
-  database: 'postgres',
+  host: process.env.DB_HOST,
+  port: parseInt(process.env.DB_PORT),
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   autoLoadEntities: true,
   migrations: ['src/migration/**/*.ts'],
   synchronize: false,
