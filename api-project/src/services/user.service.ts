@@ -9,11 +9,15 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class UserService {
+  private readonly token: string;
+
   constructor(
     @InjectRepository(User)
     private userRepository: Repository<User>,
-    private configService: ConfigService,
-  ) {}
+    config: ConfigService,
+  ) {
+    this.token = config.get('TOKEN_SECRET');
+  }
 
   getUsers() {
     return this.userRepository.find({
@@ -72,6 +76,7 @@ export class UserService {
     email: string,
     password: string,
   ): Promise<{ token: string; user: Partial<User> } | null> {
+    console.log(this.token);
     const user = await this.findOneByEmail(email);
     if (user === undefined) {
       return null;
@@ -82,13 +87,9 @@ export class UserService {
       return null;
     }
 
-    const token = jwt.sign(
-      { id: user.id },
-      this.configService.get('TOKEN_SECRET'),
-      {
-        expiresIn: '1h',
-      },
-    );
+    const token = jwt.sign({ id: user.id }, this.token, {
+      expiresIn: '1h',
+    });
 
     const { id, userType } = user;
 
