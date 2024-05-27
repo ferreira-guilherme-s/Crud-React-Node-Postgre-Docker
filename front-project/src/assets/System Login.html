@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://localhost:5173/dashboard -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="module">
+import RefreshRuntime from "/@react-refresh"
+RefreshRuntime.injectIntoGlobalHook(window)
+window.$RefreshReg$ = () => {}
+window.$RefreshSig$ = () => (type) => type
+window.__vite_plugin_react_preamble_installed__ = true
+</script>
+
+    <script type="module" src="./System Login_files/client"></script>
+
+    
+    <link rel="icon" type="image/svg+xml" href="http://localhost:5173/src/assets/react-1-logo.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Login</title>
+  <style type="text/css" data-vite-dev-id="/Users/ferreira/Library/CloudStorage/OneDrive-PAYNETCAPTURADETRANSACOESESISTEMASLTDA/estudos/node/nest/entrevista/front-project/src/App.css">* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica;
+  text-shadow: #000 1px 1px;
+  color: #fff;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #cfcdce, #434242);
+  background-size: cover;
+  background-position: center;
+}</style><style type="text/css" data-vite-dev-id="/Users/ferreira/Library/CloudStorage/OneDrive-PAYNETCAPTURADETRANSACOESESISTEMASLTDA/estudos/node/nest/entrevista/front-project/src/GlobalCss/Global.css">.container {
+  width: 450px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 40px;
+}
+
+.container h1 {
+  text-align: center;
+  font-size: 30px;
+  color: #ffff;
+}
+
+.container .input-field {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 30px auto;
+}
+
+.input-field input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 20px 45px 20px 25px;
+}
+
+.input-field input::placeholder {
+  color: #fff;
+}
+
+.input-field .icon {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #fff;
+}
+
+.container .recall-forget {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14.5px;
+  margin: -15px 0 15px;
+}
+
+.recall-forget label input {
+  accent-color: #fff;
+  margin-right: 4px;
+}
+
+.recall-forget a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.recall-forget a:hover {
+  text-decoration: underline;
+}
+
+.container button {
+  width: 100%;
+  height: 45px;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 700;
+  text-shadow: none;
+}
+
+.container .signup-link {
+  font-size: 14.5px;
+  text-align: center;
+  margin: 20px 0 15px;
+}
+
+.signup-link p a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signup-link p a:hover {
+  text-decoration: underline;
+}</style><style type="text/css" data-vite-dev-id="/Users/ferreira/Library/CloudStorage/OneDrive-PAYNETCAPTURADETRANSACOESESISTEMASLTDA/estudos/node/nest/entrevista/front-project/src/components/ForgotPassword/ForgotPassword.css">.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.loading {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  color: #fff;
+}
+
+.loading span {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  animation: loading 1.2s infinite;
+}
+
+.loading span:nth-child(1) {
+  left: 8px;
+  animation-delay: 0s;
+}
+
+.loading span:nth-child(2) {
+  left: 32px;
+  animation-delay: 0.2s;
+}
+
+.loading span:nth-child(3) {
+  left: 56px;
+  animation-delay: 0.4s;
+}
+
+@keyframes loading {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}</style><style type="text/css" data-vite-dev-id="/Users/ferreira/Library/CloudStorage/OneDrive-PAYNETCAPTURADETRANSACOESESISTEMASLTDA/estudos/node/nest/entrevista/front-project/src/components/HomePage/HomePage.css">.user-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.user-list-item {
+  background-color: #f9f9f9;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-list-item h2 {
+  margin: 0;
+  color: #333;
+  font-size: 1.5em;
+}
+
+.user-list-item p {
+  margin: 0;
+  color: #666;
+  font-size: 1.2em;
+}
+
+.user-table {
+  width: 60%;
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+.user-table th,
+.user-table td {
+  padding: 10px;
+  text-align: left;
+}
+
+.user-table th {
+  color: white;
+  font-weight: bold;
+}
+
+.user-table tr:hover {
+  background-color: #999;
+  cursor: pointer;
+}
+
+.user-table button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  padding: 12px;
+}
+
+.user-table button:last-child {
+  margin-right: 0;
+}
+
+.create-button {
+  background-color: #bbb; /* Cor de fundo cinza claro */
+  border: none;
+  border-radius: 5px; /* Bordas arredondadas */
+  padding: 10px 20px; /* Espaçamento interno para tornar o botão maior */
+  cursor: pointer;
+  font-size: 100%;
+  margin-bottom: 10px;
+  align-self: flex-start;
+  text-decoration: none; /* Remove o sublinhado do texto */
+  color: white; /* Cor do texto preto */
+  transition: background-color 0.3s; /* Transição suave da cor de fundo */
+}
+
+.create-button:hover {
+  background-color: gray; 
+}
+.modal-input {
+  width: 100%; 
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px; 
+  color: #777;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-style: normal;
+  font-weight: normal;
+}
+
+
+.modal-input-create {
+  width: 100%; 
+  padding: 10px; 
+  margin-top: 5px;
+  color: #777;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-style: normal;
+  font-weight: normal;
+}
+
+form button{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 15px;
+  border-radius: 10px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+ .title {
+  margin: 0;
+  color: #fff;
+  font-size: 1.5em;
+  text-align: center;
+}</style><style type="text/css" data-vite-dev-id="/Users/ferreira/Library/CloudStorage/OneDrive-PAYNETCAPTURADETRANSACOESESISTEMASLTDA/estudos/node/nest/entrevista/front-project/src/components/Modal/Modal.css">/* Modal.css */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  position: fixed;
+  background-color: #ccc;
+  padding: 20px;
+  border-radius: 4px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 100%;
+}
+</style></head>
+  <body>
+    <div id="root"><div class="App"><div style="display: flex; flex-direction: column;"><button class="create-button"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Criar Usuário</button><table class="user-table"><thead><tr><th>Nome</th><th>Email</th></tr></thead><tbody><tr><td>Yasmin Silva</td><td>yarminsbarroso@gmail.com</td><td><button><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></button><button><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button></td></tr><tr><td>Guilherme Ferreira</td><td>guilherme@gmail.com</td><td><button><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></button><button><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button></td></tr><tr><td>Ferreira</td><td>guilhermefs159@gmail.com</td><td><button><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></button><button><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button></td></tr><tr><td>Yasmin Silva Barroso</td><td>yasmin.barroso@gmail.com</td><td><button><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></button><button><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button></td></tr></tbody></table></div></div></div>
+    <script type="module" src="./System Login_files/main.tsx"></script>
+  
+
+<reclameaqui-extension-pin><section><template shadowrootmode="open"><style data-styled="active" data-styled-version="5.3.11"></style></template></section></reclameaqui-extension-pin></body></html>
