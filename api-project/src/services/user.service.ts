@@ -5,12 +5,14 @@ import { User } from 'src/models/entities/user.entity';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import { ResetPasswordDto } from 'src/dtos/reset-password-dto';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User)
     private userRepository: Repository<User>,
+    private configService: ConfigService,
   ) {}
 
   getUsers() {
@@ -80,9 +82,13 @@ export class UserService {
       return null;
     }
 
-    const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET, {
-      expiresIn: '1h',
-    });
+    const token = jwt.sign(
+      { id: user.id },
+      this.configService.get('TOKEN_SECRET'),
+      {
+        expiresIn: '1h',
+      },
+    );
 
     const { id, userType } = user;
 
