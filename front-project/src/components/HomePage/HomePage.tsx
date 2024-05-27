@@ -184,16 +184,18 @@ const HomePage = () => {
           {users.map((user) => (
             <tr key={user.id}>
               <td>{user.name}</td>
-              <td>{user.email}</td>
               {getUserType === 'admin' ? (
-                <td>
-                  <button onClick={() => handleGetUser(user.id)}>
-                    <FiEdit2 />
-                  </button>
-                  <button onClick={() => handleDelete(user.id)}>
-                    <FiTrash2 />
-                  </button>
-                </td>
+                <>
+                  <td>{user.email}</td>
+                  <td>
+                    <button onClick={() => handleGetUser(user.id)}>
+                      <FiEdit2 />
+                    </button>
+                    <button onClick={() => handleDelete(user.id)}>
+                      <FiTrash2 />
+                    </button>
+                  </td>
+                </>
               ) : null}
               
             </tr>
