@@ -28,9 +28,10 @@ services:
       - PG_DB=postgres
       - PG_PORT=5432
     command: >
-      bash -c "npm run typeorm migration:run && npm start"
+      bash -c "npx wait-on tcp:db:5432 && npm run typeorm migration:run && npm start"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
   db:
     container_name: db
     image: postgres:14.2
