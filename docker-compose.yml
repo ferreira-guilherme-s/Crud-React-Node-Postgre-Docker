@@ -1,6 +1,17 @@
 version: '3.9'
 
 services:
+  nxginx:
+    depends_on:
+      - api
+      - front
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: "./nginx"
+    ports:
+      - "3050:80"
+
   front:
     container_name: front-project
     build: 

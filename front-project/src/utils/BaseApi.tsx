@@ -1,3 +1,3 @@
-const api = "http://localhost:3000/users/";
+const api = "/api/users/";
 
 export default api;
