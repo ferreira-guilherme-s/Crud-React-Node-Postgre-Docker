@@ -5,7 +5,7 @@
 Este serviço lida com operações relacionadas aos usuários em uma aplicação Nest.js. Ele inclui funcionalidades como registro de usuários, login, obtenção de usuários, atualização de informações, redefinição de senha e exclusão de usuários.
 Ao inicializar o projeto, a primeira tela será a de login, onde o usuário tem a opção de criar um usuário caso não seja cadastrado, ou caso ele tenha esquecido a senha, ele poderá resetar a senha.
 O sistema conta com validação de tipo de usuário. Caso o usuário seja do tipo ‘Admin’, ele terá acesso a editar outros usuários, excluir usuários e criar usuários de dentro da plataforma. Quando o usuário é do tipo ‘user’, ao fazer login ele só poderá listar os usuários cadastrados no sistema e editar o seu próprio usuário. Sendo impedido de editar ou excluir outros usuários, assim como também criar usuários.
-
+Quando um usuário faz a edição do próprio login, ele será direcionado para a tela de login novamente, pois, precisará ser feito novo login para aplicar as mudanças.
 Ao configurar o seu ambiente, você pode utilizar o e-mail: admin@admin.com e a senha admin@123 para acessar o portal.
 
 ## Tecnologias Utilizadas

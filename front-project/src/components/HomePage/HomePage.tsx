@@ -149,6 +149,7 @@ const HomePage = () => {
   }
 
   if (status === 'error') {
+    localStorage.clear();
     return <div>Error 404: Page not found</div>;
   }
 
@@ -177,7 +178,7 @@ const HomePage = () => {
         <thead>
           <tr>
             <th>Nome</th>
-            <th>Email</th>
+            {getUserType === 'admin' ? <th>Email</th> : null}
           </tr>
         </thead>
         <tbody>
