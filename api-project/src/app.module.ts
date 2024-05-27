@@ -15,7 +15,7 @@ dotenv.config();
 const appModules = [UserModule, CommonData];
 const typeOrmModule = TypeOrmModule.forRoot({
   type: 'postgres',
-  host: process.env.DB_HOST,
+  host: 'db',
   port: 5432,
   username: 'postgres',
   password: 'postgres',
