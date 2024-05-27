@@ -12,6 +12,7 @@ services:
       - VUE_APP_API_URL=http://api:3000
     depends_on:
       - api
+      - db
 
   api:
     container_name: api-project
@@ -27,6 +28,7 @@ services:
       - PG_PASSWORD=postgres
       - PG_DB=postgres
       - PG_PORT=5432
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
     command: >
       bash -c "npx wait-on tcp:db:5432 && npm run typeorm migration:run && npm start"
     depends_on:
